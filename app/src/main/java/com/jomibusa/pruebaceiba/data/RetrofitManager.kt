@@ -20,6 +20,8 @@ class RetrofitManager {
                 if (response?.body() != null) {
                     listener(response.body())
                     Log.d(TAG, "onResponse ${response.body()}")
+                } else {
+                    listener(null)
                 }
             }
 
@@ -37,6 +39,8 @@ class RetrofitManager {
                 if (response?.body() != null) {
                     listener(response.body())
                     Log.d(TAG, "onResponse ${response.body()}")
+                } else {
+                    listener(null)
                 }
             }
 

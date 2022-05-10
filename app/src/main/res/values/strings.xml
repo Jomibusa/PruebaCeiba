@@ -3,4 +3,5 @@
     <string name="text_title_splash">Prueba de Ingreso \nCEIBA SOFTWARE</string>
     <string name="text_general_title_dialog">¡Atención!</string>
     <string name="text_show_post">VER PUBLICACIONES</string>
+    <string name="text_no_data_available">List is empty</string>
 </resources>
