@@ -1,27 +1,22 @@
 package com.jomibusa.pruebaceiba.interfaces
 
 import androidx.recyclerview.widget.RecyclerView
-import com.jomibusa.pruebaceiba.model.User
 
-interface MainActivityCT {
+interface PostsUserCT {
 
     interface Presenter {
 
-        fun start(recyclerView: RecyclerView)
-
-        fun doFilter(search: String?)
+        fun start(recyclerView: RecyclerView, userID: Int)
 
     }
 
     interface View {
 
-        fun showListUsers(show: Boolean)
+        fun showListPosts(show: Boolean)
 
         fun showNotData(show: Boolean)
 
         fun showLoading(show: Boolean)
-
-        fun navigateToPosts(user: User)
 
     }
 

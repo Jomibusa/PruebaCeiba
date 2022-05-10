@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.PruebaCeiba">
         <activity
+            android:name=".view.PostsUser"
+            android:exported="false" />
+        <activity
             android:name=".view.Splash"
             android:exported="true"
             android:theme="@style/Theme.AppCompat.NoActionBar">

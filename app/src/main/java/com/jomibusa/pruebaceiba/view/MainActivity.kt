@@ -1,11 +1,13 @@
 package com.jomibusa.pruebaceiba.view
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.widget.SearchView
 import com.jomibusa.pruebaceiba.base.BaseActivity
 import com.jomibusa.pruebaceiba.databinding.ActivityMainBinding
 import com.jomibusa.pruebaceiba.interfaces.MainActivityCT
+import com.jomibusa.pruebaceiba.model.User
 import com.jomibusa.pruebaceiba.presenter.MainActivityPT
 
 class MainActivity : BaseActivity(), MainActivityCT.View, SearchView.OnQueryTextListener {
@@ -25,7 +27,8 @@ class MainActivity : BaseActivity(), MainActivityCT.View, SearchView.OnQueryText
 
         binding.searchViewUser.setOnQueryTextListener(this@MainActivity)
 
-        val closeButton = binding.searchViewUser.findViewById<View>(androidx.appcompat.R.id.search_close_btn)
+        val closeButton =
+            binding.searchViewUser.findViewById<View>(androidx.appcompat.R.id.search_close_btn)
         closeButton.setOnClickListener {
             binding.searchViewUser.setQuery("", false)
             showListUsers(true)
@@ -65,5 +68,10 @@ class MainActivity : BaseActivity(), MainActivityCT.View, SearchView.OnQueryText
         } else {
             binding.progressBar.visibility = View.GONE
         }
+    }
+
+    override fun navigateToPosts(user: User) {
+        val intent = Intent(this, PostsUser::class.java).putExtra("USER", user)
+        startActivity(intent)
     }
 }

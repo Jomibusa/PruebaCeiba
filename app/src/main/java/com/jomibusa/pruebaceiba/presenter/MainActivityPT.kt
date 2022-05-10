@@ -1,6 +1,5 @@
 package com.jomibusa.pruebaceiba.presenter
 
-import android.util.Log
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.jomibusa.pruebaceiba.adapter.UserAdapter
@@ -32,8 +31,8 @@ class MainActivityPT(private val view: MainActivityCT.View) : MainActivityCT.Pre
     }
 
     private fun setAdapter(listUsers: List<User>) {
-        userAdapter = UserAdapter { item ->
-            Log.d("TEST_USER_SELECTED", "Name: ${item.name}")
+        userAdapter = UserAdapter { user ->
+            view.navigateToPosts(user)
         }
         userAdapter.setListUsers(listUsers)
         recyclerViewUsers.apply {
