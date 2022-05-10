@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Prueba Ceiba</string>
+    <string name="text_title_splash">Prueba de Ingreso \nCEIBA SOFTWARE</string>
+    <string name="text_general_title_dialog">¡Atención!</string>
 </resources>
