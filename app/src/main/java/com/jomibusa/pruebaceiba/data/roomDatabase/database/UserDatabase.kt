@@ -5,9 +5,10 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.jomibusa.pruebaceiba.data.roomDatabase.dao.UserDAO
+import com.jomibusa.pruebaceiba.data.roomDatabase.entities.PostEntity
 import com.jomibusa.pruebaceiba.data.roomDatabase.entities.UserEntity
 
-@Database(entities = [UserEntity::class], version = 1)
+@Database(entities = [UserEntity::class, PostEntity::class], version = 1)
 abstract class UserDatabase : RoomDatabase() {
 
     abstract fun getUserDao(): UserDAO

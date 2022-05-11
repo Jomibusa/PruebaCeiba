@@ -4,10 +4,8 @@ import android.os.Bundle
 import android.view.View
 import com.jomibusa.pruebaceiba.base.BaseActivity
 import com.jomibusa.pruebaceiba.databinding.ActivityPostsUserBinding
-import com.jomibusa.pruebaceiba.interfaces.MainActivityCT
 import com.jomibusa.pruebaceiba.interfaces.PostsUserCT
 import com.jomibusa.pruebaceiba.data.model.User
-import com.jomibusa.pruebaceiba.presenter.MainActivityPT
 import com.jomibusa.pruebaceiba.presenter.PostsUserPT
 
 class PostsUser : BaseActivity(), PostsUserCT.View {
@@ -33,7 +31,7 @@ class PostsUser : BaseActivity(), PostsUserCT.View {
 
         presenter = PostsUserPT(this)
 
-        presenter.start(binding.recyclerViewUsers, user?.userID ?: 0)
+        presenter.start(this, binding.recyclerViewUsers, user?.userID ?: 0)
     }
 
     override fun showListPosts(show: Boolean) {

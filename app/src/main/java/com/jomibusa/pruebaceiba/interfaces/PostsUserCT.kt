@@ -1,12 +1,13 @@
 package com.jomibusa.pruebaceiba.interfaces
 
+import android.content.Context
 import androidx.recyclerview.widget.RecyclerView
 
 interface PostsUserCT {
 
     interface Presenter {
 
-        fun start(recyclerView: RecyclerView, userID: Int)
+        fun start(context: Context, recyclerView: RecyclerView, userID: Int)
 
     }
 
