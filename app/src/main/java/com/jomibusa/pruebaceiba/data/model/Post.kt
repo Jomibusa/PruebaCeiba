@@ -1,4 +1,4 @@
-package com.jomibusa.pruebaceiba.model
+package com.jomibusa.pruebaceiba.data.model
 
 import com.google.gson.annotations.SerializedName
 

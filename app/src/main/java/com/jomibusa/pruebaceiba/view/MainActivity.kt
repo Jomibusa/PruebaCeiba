@@ -7,7 +7,7 @@ import androidx.appcompat.widget.SearchView
 import com.jomibusa.pruebaceiba.base.BaseActivity
 import com.jomibusa.pruebaceiba.databinding.ActivityMainBinding
 import com.jomibusa.pruebaceiba.interfaces.MainActivityCT
-import com.jomibusa.pruebaceiba.model.User
+import com.jomibusa.pruebaceiba.data.model.User
 import com.jomibusa.pruebaceiba.presenter.MainActivityPT
 
 class MainActivity : BaseActivity(), MainActivityCT.View, SearchView.OnQueryTextListener {
@@ -23,7 +23,7 @@ class MainActivity : BaseActivity(), MainActivityCT.View, SearchView.OnQueryText
 
         presenter = MainActivityPT(this)
 
-        presenter.start(binding.recyclerViewUsers)
+        presenter.start(this, binding.recyclerViewUsers)
 
         binding.searchViewUser.setOnQueryTextListener(this@MainActivity)
 

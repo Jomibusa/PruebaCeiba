@@ -6,7 +6,7 @@ import android.widget.Filter
 import android.widget.Filterable
 import androidx.recyclerview.widget.RecyclerView
 import com.jomibusa.pruebaceiba.databinding.ItemUserBinding
-import com.jomibusa.pruebaceiba.model.User
+import com.jomibusa.pruebaceiba.data.model.User
 
 class UserAdapter(private val onClick: (User) -> Unit) :
     RecyclerView.Adapter<UserAdapter.UserViewHolder>(), Filterable {

@@ -4,7 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.jomibusa.pruebaceiba.databinding.ItemPostBinding
-import com.jomibusa.pruebaceiba.model.Post
+import com.jomibusa.pruebaceiba.data.model.Post
 
 class PostsAdapter : RecyclerView.Adapter<PostsAdapter.PostsViewHolder>() {
 

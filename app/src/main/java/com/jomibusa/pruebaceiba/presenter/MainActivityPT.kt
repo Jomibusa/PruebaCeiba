@@ -1,11 +1,14 @@
 package com.jomibusa.pruebaceiba.presenter
 
+import android.content.Context
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.jomibusa.pruebaceiba.adapter.UserAdapter
-import com.jomibusa.pruebaceiba.data.RetrofitManager
+import com.jomibusa.pruebaceiba.data.network.RetrofitManager
 import com.jomibusa.pruebaceiba.interfaces.MainActivityCT
-import com.jomibusa.pruebaceiba.model.User
+import com.jomibusa.pruebaceiba.data.model.User
+import com.jomibusa.pruebaceiba.data.roomDatabase.database.UserDatabase
+import com.jomibusa.pruebaceiba.data.roomDatabase.entities.UserEntity
 
 class MainActivityPT(private val view: MainActivityCT.View) : MainActivityCT.Presenter {
 
@@ -14,13 +17,38 @@ class MainActivityPT(private val view: MainActivityCT.View) : MainActivityCT.Pre
     private lateinit var recyclerViewUsers: RecyclerView
     private lateinit var userAdapter: UserAdapter
 
-    override fun start(recyclerView: RecyclerView) {
-        retrofitManager = RetrofitManager()
-        this.recyclerViewUsers = recyclerView
+    private lateinit var context: Context
 
+    private lateinit var database: UserDatabase
+
+    override fun start(context: Context, recyclerView: RecyclerView) {
+
+        this.recyclerViewUsers = recyclerView
+        this.context = context
+
+        database = UserDatabase(context)
+        retrofitManager = RetrofitManager()
+        validateDB()
+
+    }
+
+    private fun validateDB() {
+        val dataUsers = database.getUserDao().getAllUser()
+        if (dataUsers != null && dataUsers.isNotEmpty()) {
+            val listUser = parseEntityToModel(dataUsers)
+            setAdapter(listUser)
+            view.showLoading(false)
+            view.showNotData(false)
+        } else {
+            getListUsers()
+        }
+    }
+
+    private fun getListUsers() {
         retrofitManager.getListUsers {
             if (it != null && it.isNotEmpty()) {
                 setAdapter(it)
+                insertUsersDatabase(it)
                 view.showLoading(false)
                 view.showNotData(false)
             } else {
@@ -28,6 +56,21 @@ class MainActivityPT(private val view: MainActivityCT.View) : MainActivityCT.Pre
                 view.showNotData(true)
             }
         }
+    }
+
+    private fun parseEntityToModel(listUsers: List<UserEntity>): List<User> {
+        val listUserModel: MutableList<User> = mutableListOf()
+        for (i in listUsers.indices) {
+            val user = User(
+                userID = listUsers[i].userID,
+                name = listUsers[i].name,
+                phone = listUsers[i].phone,
+                email = listUsers[i].email
+            )
+            listUserModel.add(user)
+        }
+
+        return listUserModel
     }
 
     private fun setAdapter(listUsers: List<User>) {
@@ -51,6 +94,23 @@ class MainActivityPT(private val view: MainActivityCT.View) : MainActivityCT.Pre
         } else {
             view.showListUsers(true)
             view.showNotData(false)
+        }
+    }
+
+    private fun insertUsersDatabase(listUsers: List<User>) {
+        for (i in listUsers.indices) {
+            database.getUserDao().insertAllUser(
+                UserEntity(
+                    listUsers[i].userID,
+                    listUsers[i].name,
+                    listUsers[i].email,
+                    listUsers[i].phone
+                )
+            )
+        }
+        val data = database.getUserDao().getAllUser()
+        data?.forEach {
+            println(it)
         }
     }
 }

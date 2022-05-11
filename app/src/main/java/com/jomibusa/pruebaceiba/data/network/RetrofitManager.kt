@@ -1,9 +1,9 @@
-package com.jomibusa.pruebaceiba.data
+package com.jomibusa.pruebaceiba.data.network
 
 import android.util.Log
 import com.jomibusa.pruebaceiba.interfaces.ApiService
-import com.jomibusa.pruebaceiba.model.Post
-import com.jomibusa.pruebaceiba.model.User
+import com.jomibusa.pruebaceiba.data.model.Post
+import com.jomibusa.pruebaceiba.data.model.User
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response

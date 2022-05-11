@@ -6,7 +6,7 @@ import com.jomibusa.pruebaceiba.base.BaseActivity
 import com.jomibusa.pruebaceiba.databinding.ActivityPostsUserBinding
 import com.jomibusa.pruebaceiba.interfaces.MainActivityCT
 import com.jomibusa.pruebaceiba.interfaces.PostsUserCT
-import com.jomibusa.pruebaceiba.model.User
+import com.jomibusa.pruebaceiba.data.model.User
 import com.jomibusa.pruebaceiba.presenter.MainActivityPT
 import com.jomibusa.pruebaceiba.presenter.PostsUserPT
 

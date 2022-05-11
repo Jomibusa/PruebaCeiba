@@ -1,7 +1,7 @@
 package com.jomibusa.pruebaceiba.interfaces
 
-import com.jomibusa.pruebaceiba.model.Post
-import com.jomibusa.pruebaceiba.model.User
+import com.jomibusa.pruebaceiba.data.model.Post
+import com.jomibusa.pruebaceiba.data.model.User
 import com.jomibusa.pruebaceiba.util.EndPointList
 import retrofit2.Call
 import retrofit2.Retrofit

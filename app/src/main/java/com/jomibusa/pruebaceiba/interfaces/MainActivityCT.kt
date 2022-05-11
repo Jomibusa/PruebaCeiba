@@ -1,13 +1,14 @@
 package com.jomibusa.pruebaceiba.interfaces
 
+import android.content.Context
 import androidx.recyclerview.widget.RecyclerView
-import com.jomibusa.pruebaceiba.model.User
+import com.jomibusa.pruebaceiba.data.model.User
 
 interface MainActivityCT {
 
     interface Presenter {
 
-        fun start(recyclerView: RecyclerView)
+        fun start(context: Context, recyclerView: RecyclerView)
 
         fun doFilter(search: String?)
 
