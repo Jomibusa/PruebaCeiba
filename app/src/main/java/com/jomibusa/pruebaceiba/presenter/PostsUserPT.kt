@@ -7,10 +7,8 @@ import com.jomibusa.pruebaceiba.adapter.PostsAdapter
 import com.jomibusa.pruebaceiba.data.network.RetrofitManager
 import com.jomibusa.pruebaceiba.interfaces.PostsUserCT
 import com.jomibusa.pruebaceiba.data.model.Post
-import com.jomibusa.pruebaceiba.data.model.User
 import com.jomibusa.pruebaceiba.data.roomDatabase.database.UserDatabase
 import com.jomibusa.pruebaceiba.data.roomDatabase.entities.PostEntity
-import com.jomibusa.pruebaceiba.data.roomDatabase.entities.UserEntity
 
 class PostsUserPT(private val view: PostsUserCT.View) : PostsUserCT.Presenter {
 
@@ -88,7 +86,7 @@ class PostsUserPT(private val view: PostsUserCT.View) : PostsUserCT.Presenter {
 
     private fun insertPostsDatabase(listPosts: List<Post>, userID: Int) {
         for (i in listPosts.indices) {
-            database.getUserDao().insertAllPost(
+            database.getUserDao().insertPost(
                 PostEntity(
                     listPosts[i].postID,
                     listPosts[i].userID,

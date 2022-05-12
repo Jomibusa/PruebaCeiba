@@ -99,7 +99,7 @@ class MainActivityPT(private val view: MainActivityCT.View) : MainActivityCT.Pre
 
     private fun insertUsersDatabase(listUsers: List<User>) {
         for (i in listUsers.indices) {
-            database.getUserDao().insertAllUser(
+            database.getUserDao().insertUser(
                 UserEntity(
                     listUsers[i].userID,
                     listUsers[i].name,

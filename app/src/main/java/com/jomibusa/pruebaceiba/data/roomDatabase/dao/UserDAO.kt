@@ -17,9 +17,9 @@ interface UserDAO {
     fun getAllPost(userId: Int): List<PostEntity>?
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertAllUser(vararg users: UserEntity)
+    fun insertUser(vararg users: UserEntity)
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertAllPost(vararg posts: PostEntity)
+    fun insertPost(vararg posts: PostEntity)
 
 }
